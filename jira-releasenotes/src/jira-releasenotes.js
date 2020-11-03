@@ -1,4 +1,4 @@
-const core = require('@actions/core');
+//const core = require('@actions/core');
 const JiraClient = require('jira-client');
 const { getConventionalCommits } = require('../../utils/src/versions');
 
@@ -19,7 +19,7 @@ const findJiraChanges = async (projectKey) => {
     const content = `${scope} ${subject} ${body || ''} ${footer || ''}`;
     new Set(content.match(issueIdRegEx)).forEach((issueKey) => {
       if (issues[issueKey]) {
-        core.warning(`${issueKey} was referred by multiple commits. Last entry wins!`);
+        //core.warning(`${issueKey} was referred by multiple commits. Last entry wins!`);
       }
       issues[issueKey] = {
         subject,
@@ -73,10 +73,10 @@ const createReleaseNotes = async ({
         if (issue.fields[releaseNoteFieldId] === null) {
           const update = createUpdate(change, releaseNoteFieldId);
           return client.updateIssue(issueKey, update).then(() => {
-            core.info(`Issue ${issueKey} was updated with a release note`);
+            //core.info(`Issue ${issueKey} was updated with a release note`);
           });
         }
-        core.info(`Skip issue ${issueKey}. It already has a release note`);
+        //core.info(`Skip issue ${issueKey}. It already has a release note`);
         return null;
       }));
   });
