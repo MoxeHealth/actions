@@ -17,12 +17,14 @@ run(async () => {
   const projectKey = core.getInput('jira-project', { required: true });
   const releaseNoteField = core.getInput('field-releasenote', { required: true });
 
-  await createReleaseNotes({
-    protocol,
-    host,
-    projectKey,
-    releaseNoteField,
-  });
+  core.setFailed(`Host: ${host}. Username: ${process.env.JIRA_USERNAME} `);
+  
+ // await createReleaseNotes({
+ //   protocol,
+ //  host,
+ //   projectKey,
+ //   releaseNoteField,
+ // });
 });
 
 
