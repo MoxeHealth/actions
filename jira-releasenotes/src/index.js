@@ -3,7 +3,7 @@ const { checkEnv, run } = require('../../utils');
 const { createReleaseNotes } = require('./jira-releasenotes');
 
 run(async () => {
-  checkEnv(['JIRA_USERNAME', 'JIRA_PASSWORD']);
+  checkEnv(['ACTIONS_JIRA_USERNAME', 'ACTIONS_JIRA_PASSWORD']);
 
   const protocol = core.getInput('jira-protocol', { required: true });
   const host = core.getInput('jira-host', { required: true });
